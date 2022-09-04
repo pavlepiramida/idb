@@ -31,6 +31,6 @@ class Config {
   static final apiTagsUrl = '$apiUrl/v1/idb/tags';
   static final apiItemsUrl = '$apiUrl/v1/idb/items';
   static final apiItemUrl = '$apiUrl/v1/idb/items/<guid>';
-  static final apiSignUploadUrl = '$apiUrl/v1/idb/sign_s3_upload';
+  static final apiSignUploadUrl = '$apiUrl/v1/idb/image_upload';
   static final apiUsersUrl = '$apiUrl/v1/idb/users';
 }
