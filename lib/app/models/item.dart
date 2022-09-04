@@ -1,5 +1,4 @@
 import 'package:html/parser.dart';
-import 'package:idb/app/config.dart';
 import 'package:idb/app/models/tag.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -43,32 +42,15 @@ class Item {
   @override
   int get hashCode => id;
 
-  /// Returns the same content, but with images replaced
-  /// to full path src and as image tags
-  String get processedHtml {
-    return _processImages(contentHtml);
-  }
-
   /// Split contentHtml to parts to be able
   /// to process each part separately for custom functionality
   List<String> get htmlParts {
-    final doc = parse(processedHtml);
+    final doc = parse(contentHtml);
 
     if (doc.body == null) {
-      return [processedHtml];
+      return [contentHtml];
     }
 
     return doc.body!.children.map((el) => el.outerHtml).toList();
-  }
-
-  /// Convert uploaded images to "img" html tag.
-  /// Returns updated html content.
-  String _processImages(String htmlContent) {
-    final re = RegExp(r'\[img:(.*?)\]', dotAll: true);
-
-    return htmlContent.replaceAllMapped(re, (m) {
-      final imgPath = '${m.group(1)}';
-      return '<img class="item-image" src="${Config.bucketUrl}/$imgPath" />';
-    });
   }
 }

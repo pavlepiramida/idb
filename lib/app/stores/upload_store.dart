@@ -35,8 +35,10 @@ abstract class _UploadStore extends BaseStore with Store {
 
     final Map<String, String> headers = {
       'x-amz-acl': 'public-read',
+      'x-ms-date':'2021-06-08',
       'Cache-Control': 'max-age=31536000',
       'content-type': contentType,
+      'x-ms-blob-type':'BlockBlob'
     };
 
     final response = await http.put(uri, headers: headers, body: bytes);

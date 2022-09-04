@@ -75,7 +75,7 @@ class _UploadImageDialogState extends State<UploadImageDialog> {
 
     if (isUploaded) {
       // Image info to copy to clipboard and can be inserted in any place of content.
-      String info = '[img:$uploadTo]';
+      String info = '![]($uploadTo)';
 
       await FlutterClipboard.copy(info);
 
