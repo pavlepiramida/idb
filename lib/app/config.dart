@@ -23,7 +23,6 @@ class Config {
   // Loaded from json config on start
   static late final String apiUrl;
   static late final String sentryDSN;
-  static late final String bucketUrl;
 
   // API endpoints
   static final apiLoginUrl = '$apiUrl/v1/auth/login';

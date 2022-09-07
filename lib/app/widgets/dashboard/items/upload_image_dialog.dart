@@ -71,7 +71,12 @@ class _UploadImageDialogState extends State<UploadImageDialog> {
       bytes = await f.readAsBytes();
     }
 
-    final bool isUploaded = await _upload.uploadFile(signedUrl, bytes, mimeType);
+    bool isUploaded =false;
+    try {
+      isUploaded= await _upload.uploadFile(signedUrl, bytes, mimeType);
+    } on Exception {
+      _scaffold.createAlert('Can not upload image to storage. Something went wrong.', type: AlertType.error);
+    }
 
     if (isUploaded) {
       // Image info to copy to clipboard and can be inserted in any place of content.

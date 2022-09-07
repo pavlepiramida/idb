@@ -26,7 +26,7 @@ Features.
 -   content items (notes)
 -   quick search
 -   keyboard shortcuts
--   uploading images and storing on AWS S3
+-   uploading images and storing
 
 ## Json config that hidden in gitignore
 
@@ -35,8 +35,7 @@ assets/json/config.json
 ```
 {
     "apiUrl": "https://<Your REST API Url>",
-    "sentryDSN": "<Your sentry DNS to report errors>",
-    "bucketUrl": "https://<your_bucket>.s3.amazonaws.com"
+    "sentryDSN": "<Your sentry DNS to report errors>"
 }
 ```
 
@@ -129,8 +128,8 @@ DELETE request
 Response (204)
 ```
 
-Sign S3 upload (if you need working with images)
-The endpoint is used to sign url for upload to S3
+image_upload (if you need working with images)
+The endpoint is used to generate upload links
 
 ```
 POST request
@@ -142,10 +141,8 @@ content_type: string
 
 Response (200):
 
-signed_url: url that will be used by Flutter ap for uploading image to AWS S3.
-upload_to: the path inside AWS S3 bucket where file will be stored.
-
-https://<your_bucket>.s3.amazonaws.com/<this_is_the_path>
+signed_url: url that will be used by Flutter ap for uploading image.
+upload_to: the path to image.
 ```
 
 Content items (notes) are stored in database on backend in markdown format. Flutter app shows content as rendered HTML using `flutter_html` package. I do markdown to HTML convertion on backend using `markdown` Python library, but optionally you can do convertion on Flutter using `flutter_markdown` package.

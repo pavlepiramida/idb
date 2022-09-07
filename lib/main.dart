@@ -56,7 +56,6 @@ Future<void> loadConfig() async {
 
   Config.apiUrl = m['apiUrl'];
   Config.sentryDSN = m['sentryDSN'];
-  Config.bucketUrl = m['bucketUrl'];
 }
 
 Future<void> main() async {
